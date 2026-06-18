@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Agenda de Turnos";
+    var turnos = ViewBag.turnos as List<Turno>;
+}
+
+<h1>Agenda de Turnos</h1>
+
+<p>
+    <a href='@Url.Action("Nuevo", "Turnos")'>Crear turno</a>
+</p>
+
+@if (turnos == null || turnos.Count == 0)
+{
+    <p>No hay turnos cargados.</p>
+}
+else
+{
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Fecha y hora</th>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var t in turnos)
+        {
+            <tr>
+                <td>@t.FechaHora</td>
+                <td>@t.NombreCliente</td>
+                <td>@t.Servicio</td>
+                <td>@t.Estado</td>
+                <td>
+                    <form action='@Url.Action("Atender", "Turnos")' method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@t.Id" />
+                        <button type="submit">Atender</button>
+                    </form>
+
+                    <form action='@Url.Action("Cancelar", "Turnos")' method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@t.Id" />
+                        <button type="submit">Cancelar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Nuevo Turno";
+}
+
+<h1>Nuevo Turno</h1>
+
+<form action='@Url.Action("Nuevo", "Turnos")' method="post">
+    <div>
+        <label>Nombre del cliente</label><br />
+        <input type="text" name="NombreCliente" />
+    </div>
+
+    <div>
+        <label>Servicio</label><br />
+        <input type="text" name="Servicio" />
+    </div>
+
+    <div>
+        <label>Fecha y hora</label><br />
+        <input type="datetime-local" name="FechaHora" />
+    </div>
+
+    <br />
+    <button type="submit">Guardar</button>
+</form>
+
+<br />
+<a asp-action="Index">Volver</a>
