@@ -41,4 +41,14 @@ public static class BD
             conn.Execute(query, new {pNuevoEstado = nuevoEstado, pId = id});
         }
     }
+
+    public static void CambiarFecha(int id, DateTime nuevaFecha)
+    {
+        string query = "UPDATE Turnos SET FechaHora = @pNuevaFecha WHERE Id = @pId";
+
+        using(SqlConnection conn = new SqlConnection(_connectionString))
+        {
+            conn.Execute(query, new {pNuevaFecha = nuevaFecha, pId = id});
+        }
+    }
 }

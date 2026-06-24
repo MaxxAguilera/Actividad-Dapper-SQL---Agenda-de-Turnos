@@ -42,4 +42,16 @@ public class TurnosController : Controller
         BD.CambiarEstado(id, "Cancelado");
         return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public IActionResult Modificar(int id)
+    {
+        ViewBag.Id = id;
+        return View("Modificar", "Turnos");
+    }
+
+    public IActionResult CambiarFecha(int id, DateTime nuevaFecha){
+        BD.CambiarFecha(id, nuevaFecha);
+        return RedirectToAction("Index");
+    }
 }

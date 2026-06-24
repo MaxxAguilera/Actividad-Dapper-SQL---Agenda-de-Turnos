@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Modificar turnos";
+    var turnos = ViewBag.turnos as List<Turno>;
+}
+
+<h1>Modificar fecha</h1>
+
+<form action='@Url.Action("CambiarFecha", "Turnos")' method="post">
+    <div>
+        <label>Fecha y hora</label><br />
+        <input type="datetime-local" name="nuevaFecha" />
+    </div>
+
+    <input type="hidden" name="id" value="@ViewBag.Id" />
+    <br />
+    <button type="submit">Guardar</button>
+</form>

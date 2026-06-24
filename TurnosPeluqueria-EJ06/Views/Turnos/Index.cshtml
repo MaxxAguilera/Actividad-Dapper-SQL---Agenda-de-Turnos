@@ -42,6 +42,11 @@ else
                         <input type="hidden" name="id" value="@t.Id" />
                         <button type="submit">Cancelar</button>
                     </form>
+
+                    <form action='@Url.Action("Modificar", "Turnos")' method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@t.Id" />
+                        <button type="submit">Modificar fecha</button>
+                    </form>
                 </td>
             </tr>
         }
